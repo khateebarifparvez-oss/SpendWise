@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpendWise — Expense Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,300;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="favicon.svg" type="image/x-icon">
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div>
+      <div class="logo">spend<span>.</span>wise</div>
+      <div class="header-date" id="headerDate"></div>
+    </div>
+  </header>
+
+  <!-- Summary Cards -->
+  <div class="summary">
+    <div class="card income">
+      <div class="card-label">Total Income</div>
+      <div class="card-value" id="totalIncome">₹0</div>
+    </div>
+    <div class="card expense">
+      <div class="card-label">Total Expenses</div>
+      <div class="card-value" id="totalExpense">₹0</div>
+    </div>
+    <div class="card balance">
+      <div class="card-label">Net Balance</div>
+      <div class="card-value" id="netBalance">₹0</div>
+    </div>
+  </div>
+
+  <!-- Add Transaction Form -->
+  <div class="form-panel">
+    <div class="form-title">Add Transaction</div>
+    <div class="form-grid">
+      <div class="form-group full">
+        <label>Type</label>
+        <div class="type-toggle">
+          <button class="type-btn expense active" id="btnExpense" onclick="setType('expense')">— Expense</button>
+          <button class="type-btn income" id="btnIncome" onclick="setType('income')">+ Income</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" id="desc" placeholder="e.g. Grocery run">
+      </div>
+      <div class="form-group">
+        <label>Amount (₹)</label>
+        <input type="number" id="amount" placeholder="0.00" min="0">
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select id="category">
+          <option value="">— Select —</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Date</label>
+        <input type="date" id="date">
+      </div>
+      <div class="form-group full">
+        <button class="add-btn" onclick="addTransaction()">Add Transaction</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filters -->
+  <div class="controls">
+    <input class="search-box" type="text" id="search" placeholder="Search transactions..." oninput="render()">
+    <select id="filterType" onchange="render()">
+      <option value="">All Types</option>
+      <option value="income">Income</option>
+      <option value="expense">Expense</option>
+    </select>
+    <select id="filterCat" onchange="render()">
+      <option value="">All Categories</option>
+    </select>
+    <select id="sortBy" onchange="render()">
+      <option value="date-desc">Newest</option>
+      <option value="date-asc">Oldest</option>
+      <option value="amount-desc">Highest</option>
+      <option value="amount-asc">Lowest</option>
+    </select>
+    <button class="clear-btn" onclick="clearAll()">Clear All</button>
+  </div>
+
+  <!-- Transaction List -->
+  <div class="list-panel">
+    <div class="list-header">
+      <span class="list-header-title">Transactions</span>
+      <span class="count-badge" id="txCount">0 entries</span>
+    </div>
+    <div id="txList"></div>
+  </div>
+
+  <!-- Category Chart -->
+  <div class="chart-panel" id="chartPanel">
+    <div class="chart-title">Spending by Category</div>
+    <div class="bar-chart" id="barChart"></div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
