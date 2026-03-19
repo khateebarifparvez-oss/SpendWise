@@ -4,10 +4,7 @@
 
 Track your income and expenses by category, filter and search through transactions, and visualize your spending with a live bar chart — all stored locally in your browser. No frameworks, no build tools, no backend.
 
----
-
 ## Features
-
 - **Add transactions** — log income or expenses with a description, amount, category, and date
 - **Smart categories** — category list switches automatically between income and expense types
 - **Live summary** — total income, total expenses, and net balance update in real time
@@ -16,19 +13,13 @@ Track your income and expenses by category, filter and search through transactio
 - **Persistent storage** — data saved to `localStorage`, survives page refreshes
 - **Delete entries** — remove individual transactions or clear all at once
 
----
+## Project Structure :
 
-## Project Structure
-
-```
 expense-tracker/
 ├── index.html      # Markup and structure
 ├── style.css       # All styling and CSS variables
 ├── app.js          # Logic, state management and rendering
 └── favicon.svg     # App icon
-```
-
----
 
 ## Getting Started
 No installation or build step needed. Just clone and open.
